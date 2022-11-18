@@ -1,27 +1,21 @@
 class Solution {
-    ArrayList<String> list = new ArrayList<>();
+    ArrayList<String> al=new ArrayList<String>();
     public List<String> generateParenthesis(int n) {
-        
-        String s="";
-        helper(s,0,0,n);
-        return list;
-        
+        dfs("",n,0,0);
+        return al;
     }
-    
-    public void helper(String s,int open,int close,int maximum)
+    public void dfs(String s,int n,int open,int close)
     {
-        if(open==close && open==maximum)
-        {
-            list.add(s);
-        }
+        if(open==close && open==n)
+            al.add(s);
         
-        if(open<maximum)
+        if(open<n)
         {
-            helper(s+"(",open+1,close,maximum);
+            dfs(s+"(",n,open+1,close);
         }
         if(close<open)
         {
-            helper(s+")",open,close+1,maximum);
+            dfs(s+")",n,open,close+1);
         }
     }
 }
